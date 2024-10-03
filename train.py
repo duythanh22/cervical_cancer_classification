@@ -45,9 +45,10 @@ parser.add_argument(
 )
 
 parser.add_argument(
-    '--fine-tune',
+    '--finetune',
     dest='fine_tune',
     default='False',
+    type=lambda x: x.lower() == 'true',
     help='Fine tuning or extractor'
 )
 

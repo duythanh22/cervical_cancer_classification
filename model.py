@@ -14,11 +14,11 @@ def build_model(pretrained=True, fine_tune=False, num_classes=5):
     model = models.densenet121(weights=weights)
 
     # Freeze or fine-tune layers
-    if fine_tune is True:
+    if fine_tune:
         print('[INFO]: Fine-tuning all layers...')
         for param in model.parameters():
             param.requires_grad = True
-    if fine_tune is False:
+    else:
         print('[INFO]: Freezing hidden layers...')
         for param in model.parameters():
             param.requires_grad = False
@@ -37,8 +37,8 @@ def build_model(pretrained=True, fine_tune=False, num_classes=5):
 
 
 if __name__ == '__main__':
-    model = build_model()
-    print(model)
+    model = build_model(pretrained=True, fine_tune=False, num_classes=5)
+    # print(model)
     total_params = sum(p.numel() for p in model.parameters())
     print(total_params)
     total_trainable_params = sum(
