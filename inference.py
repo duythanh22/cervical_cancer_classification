@@ -14,7 +14,7 @@ from model import build_model
 parser = argparse.ArgumentParser()
 parser.add_argument(
     "-w", "--weights",
-    default="outputs/best_model.pth",
+    default="outputs/best_model.pt",
     help="path to latest checkpoint (default: None)"
 )
 args = parser.parse_args()
@@ -74,14 +74,14 @@ if __name__ == "__main__":
     )
     os.makedirs(infer_result_path, exist_ok=True)
 
-    checkpoint = torch.load(weights_path)
+    checkpoint = torch.load(weights_path, map_location=torch.device('cpu'))
     # Load the model.
     model = build_model(
         num_classes=len(CLASS_NAMES)
     ).to(DEVICE)
     model.load_state_dict(checkpoint['state_dict'])
 
-    all_image_paths = glob.glob(os.path.join('data', 'Test', 'SCC', '*'))
+    all_image_paths = glob.glob(os.path.join('dataset_final', 'test', 'SCC', '*'))
 
     transform = get_test_transforms(IMAGE_SIZE)
 
