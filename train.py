@@ -135,6 +135,7 @@ if __name__ == '__main__':
     print(f"[INFO]: Using device: {device}")
     print(f"[INFO]: Learning rate: {lr}")
     print(f"[INFO]: Epochs: {epochs}\n")
+    print(f"[INFO]: Fine tune: {fine_tune}\n")
 
     model = build_model(
         pretrained=True, fine_tune=fine_tune, num_classes=len(dataset_classes)
