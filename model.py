@@ -18,7 +18,7 @@ def build_model(pretrained=True, fine_tune=False, num_classes=5):
         print('[INFO]: Fine-tuning all layers...')
         for param in model.parameters():
             param.requires_grad = True
-    else:
+    if fine_tune is False:
         print('[INFO]: Freezing hidden layers...')
         for param in model.parameters():
             param.requires_grad = False
