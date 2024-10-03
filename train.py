@@ -43,6 +43,14 @@ parser.add_argument(
     default='model',
     help='file name of the final model to save'
 )
+
+parser.add_argument(
+    '--fine-tune',
+    dest='fine_tune',
+    default='False',
+    help='Fine tuning or extractor'
+)
+
 args = vars(parser.parse_args())
 
 
@@ -122,15 +130,16 @@ if __name__ == '__main__':
 
     lr = args['learning_rate']
     epochs = args['epochs']
+    fine_tune = args['fine_tune']
     device = ('cuda' if torch.cuda.is_available() else 'cpu')
     print(f"[INFO]: Using device: {device}")
     print(f"[INFO]: Learning rate: {lr}")
     print(f"[INFO]: Epochs: {epochs}\n")
 
     model = build_model(
-        pretrained=True, fine_tune=False, num_classes=len(dataset_classes)
+        pretrained=True, fine_tune=fine_tune, num_classes=len(dataset_classes)
     ).to(device)
-    print(model)
+    # print(model)
 
     total_params = sum(p.numel() for p in model.parameters())
     print(f"{total_params}:, total params.")
