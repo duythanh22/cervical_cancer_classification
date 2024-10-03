@@ -4,8 +4,8 @@ from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
 
 # Required constants
-TRAIN_DIR = './data/train'
-VALID_DIR = './data/valid'
+TRAIN_DIR = './data/Train'
+VALID_DIR = './data/Valid'
 IMG_SIZE = 224
 NUM_WORKER = 4
 
