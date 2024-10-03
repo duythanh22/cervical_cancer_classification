@@ -134,7 +134,7 @@ if __name__ == '__main__':
     device = ('cuda' if torch.cuda.is_available() else 'cpu')
     print(f"[INFO]: Using device: {device}")
     print(f"[INFO]: Learning rate: {lr}")
-    print(f"[INFO]: Epochs: {epochs}\n")
+    print(f"[INFO]: Epochs: {epochs}")
     print(f"[INFO]: Fine tune: {fine_tune}\n")
 
     model = build_model(
